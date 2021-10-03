@@ -4,7 +4,7 @@ const morgan = require("morgan");
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const routes = require("./routes/routes");
-const { mongo } = require("mongoose");
+const mongo = require("./modules/mongoose");
 
 async function server(mode) {
   const app = express();
@@ -22,7 +22,6 @@ async function server(mode) {
     if (mode == "DEV") {
       app.use(morgan("dev"));
     }
-
     // settings
     app.set("view engine", "ejs");
     app.set("views", path.join(__dirname, "views"));
